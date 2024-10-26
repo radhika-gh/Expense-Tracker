@@ -137,12 +137,7 @@ const Home = () => {
     setFrequency("7");
   };
 
-
-  
-
-
   useEffect(() => {
-
     const fetchAllTransactions = async () => {
       try {
         setLoading(true);
@@ -155,9 +150,9 @@ const Home = () => {
           type: type,
         });
         console.log(data);
-  
+
         setTransactions(data.transactions);
-  
+
         setLoading(false);
       } catch (err) {
         // toast.error("Error please Try again...", toastOptions);

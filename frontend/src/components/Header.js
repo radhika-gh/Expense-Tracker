@@ -13,19 +13,18 @@ const navigate = useNavigate();
     navigate("/login");
   }
 
-  const [user, setUser] = useState();
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
-    
-      if (localStorage.getItem("user")) {
-        const user = JSON.parse(localStorage.getItem("user"));
-        
-        setUser(user);
-        
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      try {
+        const parsedUser = JSON.parse(storedUser);
+        setUser(parsedUser);
+      } catch (error) {
+        console.error("Error parsing user from localStorage:", error);
       }
-
-
-    
+    }
   }, []);
 
   const handleShowLogout = () => {
